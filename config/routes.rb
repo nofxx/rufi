@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :aps
+
   map.resources :cities
 
   map.resources :states
