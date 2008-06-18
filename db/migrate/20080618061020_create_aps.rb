@@ -1,17 +1,15 @@
 class CreateAps < ActiveRecord::Migration
   def self.up
     create_table :aps do |t|
-      t.string :essid
-      t.string :mac
-      t.string :enc
-      t.string :key
-      t.string :ip
-      t.string :mask
+      t.references :pais, :cidade, :estado
+      
+      t.string :essid, :key, :limit => 150
+      t.string :mac, :limit => 15
+      t.string :enc, :limit => 10
+      t.string :ip, :mask, :limit => 25
       t.boolean :dhcp
       t.integer :channel
-      t.references :pais
-      t.refences :cidade
-      t.references :estado
+
 
       t.timestamps
     end

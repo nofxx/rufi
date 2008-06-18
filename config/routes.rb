@@ -1,11 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :aps
+
+  map.root :controller => 'home', :action => 'index'
 
   map.resources :cities
-
   map.resources :states
-
   map.resources :countries
+  
+  map.resources :aps
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -15,6 +16,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
+  #map.auto_complete 'admin/:controller/:action', :requirements => { :action => /auto_complete_for_\S+/ },
+    #    :conditions => { :method => :get }
+    # 
+    # 
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
