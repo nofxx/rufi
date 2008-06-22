@@ -1,0 +1,40 @@
+<h1>Listing aps</h1>
+
+<table>
+  <tr>
+    <th>Essid</th>
+    <th>Mac</th>
+    <th>Enc</th>
+    <th>Key</th>
+    <th>Ip</th>
+    <th>Mask</th>
+    <th>Dhcp</th>
+    <th>Channel</th>
+    <th>Pais</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+  </tr>
+
+<% for ap in @aps %>
+  <tr>
+    <td><%=h ap.essid %></td>
+    <td><%=h ap.mac %></td>
+    <td><%=h ap.enc %></td>
+    <td><%=h ap.key %></td>
+    <td><%=h ap.ip %></td>
+    <td><%=h ap.mask %></td>
+    <td><%=h ap.dhcp %></td>
+    <td><%=h ap.channel %></td>
+    <td><%=h ap.pais %></td>
+    <td><%=h ap.cidade %></td>
+    <td><%=h ap.estado %></td>
+    <td><%= link_to 'Show', ap %></td>
+    <td><%= link_to 'Edit', edit_ap_path(ap) %></td>
+    <td><%= link_to 'Destroy', ap, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New ap', new_ap_path %>

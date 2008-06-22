@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  essid: MyString
+  mac: MyString
+  enc: MyString
+  key: MyString
+  ip: MyString
+  mask: MyString
+  dhcp: false
+  channel: 1
+  pais: 
+  cidade: 
+  estado: 
+
+two:
+  essid: MyString
+  mac: MyString
+  enc: MyString
+  key: MyString
+  ip: MyString
+  mask: MyString
+  dhcp: false
+  channel: 1
+  pais: 
+  cidade: 
+  estado: 
