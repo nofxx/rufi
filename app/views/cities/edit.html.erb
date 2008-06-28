@@ -1,4 +1,4 @@
-<h1>Editing city</h1>
+<h1>Editando <%= @city.essid %></h1>
 
 <% form_for(@city) do |f| %>
   <%= f.error_messages %>
@@ -12,9 +12,9 @@
     <%= f.text_field :code %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Atualizar" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @city %> |
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Ver', @city %> |
+<%= link_to 'Voltar', cities_path %>
