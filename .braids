@@ -20,10 +20,3 @@ vendor/plugins/attachment_fu:
   branch: master
   squash: true
   remote: git://github.com/technoweenie/attachment_fu.git
-vendor/plugins/annotate-models: 
-  local_branch: braid/git/vendor/plugins/annotate-models/master
-  type: git
-  revision: 
-  branch: master
-  squash: true
-  remote: ../annotate-models
