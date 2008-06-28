@@ -22,6 +22,16 @@ describe Ap do
     @ap.attributes = attr_validos_ap
     @ap.should be_valid
   end
+  
+  
+  it "should incrementar o numero no banco" do
+    lambda do
+      @ap.attributes = attr_validos_ap
+      @ap.save
+    end.should change(Ap, :count).by(1) 
+  end
+  
+  
   it "should have error on mac invalido" do
     @ap.attributes = attr_validos_ap.with(:mac => "FF:FF:FF:FF:FF:FF")
     @ap.should be_valid

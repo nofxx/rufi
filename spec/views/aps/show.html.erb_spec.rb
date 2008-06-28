@@ -13,9 +13,9 @@ describe "/aps/show.html.erb" do
     @ap.stub!(:mask).and_return("MyString")
     @ap.stub!(:dhcp).and_return(false)
     @ap.stub!(:channel).and_return("1")
-    @ap.stub!(:pais).and_return()
-    @ap.stub!(:cidade).and_return()
-    @ap.stub!(:estado).and_return()
+    @ap.stub!(:country).and_return()
+    @ap.stub!(:city).and_return()
+    @ap.stub!(:state).and_return()
 
     assigns[:ap] = @ap
   end
@@ -30,9 +30,9 @@ describe "/aps/show.html.erb" do
     response.should have_text(/MyString/)
     response.should have_text(/als/)
     response.should have_text(/1/)
-    response.should have_text(//)
-    response.should have_text(//)
-    response.should have_text(//)
+    # response.should have_text(//)
+    # response.should have_text(//)
+    # response.should have_text(//)
   end
 end
 
