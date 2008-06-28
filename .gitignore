@@ -16,3 +16,4 @@ public/uploads
 public/uploads/**/*
 *.tmproj
 coverage/*
+*~
