@@ -1,3 +1,4 @@
+<h1><%= @ap.essid %></h1>
 <p>
   <b>Essid:</b>
   <%=h @ap.essid %>
@@ -34,25 +35,25 @@
 </p>
 
 <p>
-  <b>Channel:</b>
+  <b>Canal:</b>
   <%=h @ap.channel %>
 </p>
 
 <p>
   <b>Pais:</b>
-  <%=h @ap.pais %>
+  <%=h @ap.country %>
 </p>
 
 <p>
   <b>Cidade:</b>
-  <%=h @ap.cidade %>
+  <%=h @ap.city %>
 </p>
 
 <p>
   <b>Estado:</b>
-  <%=h @ap.estado %>
+  <%=h @ap.state %>
 </p>
 
 
-<%= link_to 'Edit', edit_ap_path(@ap) %> |
-<%= link_to 'Back', aps_path %>
+<%= link_to 'Editar', edit_ap_path(@ap) %> |
+<%= link_to 'Voltar', aps_path %>

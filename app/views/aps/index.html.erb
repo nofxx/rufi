@@ -1,16 +1,16 @@
-<h1>Listing aps</h1>
+<h1>Listando Pontos de acesso</h1>
 
 <table>
   <tr>
     <th>Essid</th>
-    <th>Mac</th>
+    <th>MAC</th>
     <th>Enc</th>
     <th>Key</th>
     <th>Ip</th>
     <th>Mask</th>
     <th>Dhcp</th>
-    <th>Channel</th>
-    <th>Pais</th>
+    <th>Canal</th>
+    <th>Pa&iacute;s</th>
     <th>Cidade</th>
     <th>Estado</th>
   </tr>
@@ -25,16 +25,16 @@
     <td><%=h ap.mask %></td>
     <td><%=h ap.dhcp %></td>
     <td><%=h ap.channel %></td>
-    <td><%=h ap.pais %></td>
-    <td><%=h ap.cidade %></td>
-    <td><%=h ap.estado %></td>
-    <td><%= link_to 'Show', ap %></td>
-    <td><%= link_to 'Edit', edit_ap_path(ap) %></td>
-    <td><%= link_to 'Destroy', ap, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h ap.country %></td>
+    <td><%=h ap.city %></td>
+    <td><%=h ap.state %></td>
+    <td><%= link_to 'Ver', ap %></td>
+    <td><%= link_to 'Editar', edit_ap_path(ap) %></td>
+    <td><%= link_to 'Apagar', ap, :confirm => 'Tem certeza?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New ap', new_ap_path %>
+<%= link_to 'Novo ap', new_ap_path %>

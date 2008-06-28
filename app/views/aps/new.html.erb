@@ -1,4 +1,4 @@
-<h1>New ap</h1>
+<h1>Novo Ponto de acesso</h1>
 
 <% form_for(@ap) do |f| %>
   <%= f.error_messages %>
@@ -37,19 +37,19 @@
   </p>
   <p>
     <%= f.label :pais %><br />
-    <%= f.text_field :pais %>
+    <%= f.text_field :country %>
   </p>
   <p>
     <%= f.label :cidade %><br />
-    <%= f.text_field :cidade %>
+    <%= f.text_field :city %>
   </p>
   <p>
     <%= f.label :estado %><br />
-    <%= f.text_field :estado %>
+    <%= f.text_field :state %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Criar" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', aps_path %>
+<%= link_to 'Voltar', aps_path %>
