@@ -1,11 +1,4 @@
 --- 
-vendor/plugins/rspec-rails: 
-  local_branch: braid/git/vendor/plugins/rspec-rails/master
-  type: git
-  revision: 
-  branch: master
-  squash: true
-  remote: git://github.com/dchelimsky/rspec-rails.git
 vendor/plugins/restful-authentication: 
   local_branch: braid/git/vendor/plugins/restful-authentication/master
   type: git
@@ -13,13 +6,13 @@ vendor/plugins/restful-authentication:
   branch: master
   squash: true
   remote: git://github.com/technoweenie/restful-authentication.git
-vendor/plugins/annotate-models: 
-  local_branch: braid/git/vendor/plugins/annotate-models/master
+vendor/plugins/rspec-rails: 
+  local_branch: braid/git/vendor/plugins/rspec-rails/master
   type: git
   revision: 
   branch: master
   squash: true
-  remote: ../annotate-models
+  remote: git://github.com/dchelimsky/rspec-rails.git
 vendor/plugins/attachment_fu: 
   local_branch: braid/git/vendor/plugins/attachment-fu/master
   type: git
@@ -27,3 +20,10 @@ vendor/plugins/attachment_fu:
   branch: master
   squash: true
   remote: git://github.com/technoweenie/attachment_fu.git
+vendor/plugins/annotate-models: 
+  local_branch: braid/git/vendor/plugins/annotate-models/master
+  type: git
+  revision: 
+  branch: master
+  squash: true
+  remote: ../annotate-models
