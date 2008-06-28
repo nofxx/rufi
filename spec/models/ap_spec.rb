@@ -6,8 +6,10 @@ describe Ap do
   end
 
   it "should be valid" do
-    @ap.should be_valid
+    @ap.should_not be_valid
   end
+  
+  
 end
 
 # == Schema Info

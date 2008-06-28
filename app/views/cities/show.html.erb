@@ -1,13 +1,14 @@
+<h1><%=h @city.name %></h1>
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%=h @city.name %>
 </p>
 
 <p>
-  <b>Code:</b>
+  <b>Cep:</b>
   <%=h @city.code %>
 </p>
 
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back', cities_path %>
+<%= link_to 'Editar', edit_city_path(@city) %> |
+<%= link_to 'Voltar', cities_path %>

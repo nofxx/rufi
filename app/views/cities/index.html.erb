@@ -10,13 +10,13 @@
   <tr>
     <td><%=h city.name %></td>
     <td><%=h city.code %></td>
-    <td><%= link_to 'Show', city %></td>
-    <td><%= link_to 'Edit', edit_city_path(city) %></td>
-    <td><%= link_to 'Destroy', city, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', city %></td>
+    <td><%= link_to 'Editar', edit_city_path(city) %></td>
+    <td><%= link_to 'Apagar', city, :confirm => 'Tem certeza?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New city', new_city_path %>
+<%= link_to 'Nova cidade', new_city_path %>

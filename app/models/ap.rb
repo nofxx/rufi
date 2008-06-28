@@ -3,6 +3,8 @@ class Ap < ActiveRecord::Base
   belongs_to :country
   belongs_to :state
   has_many :clientes
+  #validates_presence_of :mac
+  
 end
 
 # == Schema Info
