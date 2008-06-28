@@ -2,6 +2,7 @@ class City < ActiveRecord::Base
   belongs_to :state
   belongs_to :country
 end
+
 # == Schema Info
 # Schema version: 20080618063650
 #

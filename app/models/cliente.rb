@@ -1,6 +1,7 @@
 class Cliente < ActiveRecord::Base
   belongs_to :ap
 end
+
 # == Schema Info
 # Schema version: 20080618063650
 #

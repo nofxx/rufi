@@ -2,6 +2,7 @@ class Country < ActiveRecord::Base
   has_many :cities
   has_many :states
 end
+
 # == Schema Info
 # Schema version: 20080618063650
 #

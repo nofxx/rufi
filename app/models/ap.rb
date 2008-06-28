@@ -4,6 +4,7 @@ class Ap < ActiveRecord::Base
   belongs_to :state
   has_many :clientes
 end
+
 # == Schema Info
 # Schema version: 20080618063650
 #
