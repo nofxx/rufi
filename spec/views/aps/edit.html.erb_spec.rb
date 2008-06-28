@@ -15,7 +15,7 @@ describe "/aps/edit.html.erb" do
     @ap.stub!(:channel).and_return("1")
     @ap.stub!(:country).and_return(1)
     @ap.stub!(:city).and_return(1)
-    @ap.stub!(:state).and_return(1)
+    @ap.stub!(:region).and_return(1)
     assigns[:ap] = @ap
   end
 

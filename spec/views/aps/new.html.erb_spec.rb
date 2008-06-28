@@ -16,7 +16,7 @@ describe "/aps/new.html.erb" do
     @ap.stub!(:channel).and_return("1")
     @ap.stub!(:country).and_return()
     @ap.stub!(:city).and_return()
-    @ap.stub!(:state).and_return()
+    @ap.stub!(:region).and_return()
     assigns[:ap] = @ap
   end
 

@@ -15,7 +15,7 @@ describe "/aps/index.html.erb" do
     ap_98.should_receive(:channel).and_return("1")
     ap_98.should_receive(:country).and_return(1)
     ap_98.should_receive(:city).and_return(1)
-    ap_98.should_receive(:state).and_return(1)
+    ap_98.should_receive(:region).and_return(1)
     ap_99 = mock_model(Ap)
     ap_99.should_receive(:essid).and_return("MyString")
     ap_99.should_receive(:mac).and_return("MyString")
@@ -27,7 +27,7 @@ describe "/aps/index.html.erb" do
     ap_99.should_receive(:channel).and_return("1")
     ap_99.should_receive(:country).and_return(1)
     ap_99.should_receive(:city).and_return(1)
-    ap_99.should_receive(:state).and_return(1)
+    ap_99.should_receive(:region).and_return(1)
 
     assigns[:aps] = [ap_98, ap_99]
   end

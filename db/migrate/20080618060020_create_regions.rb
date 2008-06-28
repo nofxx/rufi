@@ -1,6 +1,6 @@
-class CreateStates < ActiveRecord::Migration
+class CreateRegions < ActiveRecord::Migration
   def self.up
-    create_table :states do |t|
+    create_table :regions do |t|
       t.references :country
             
       t.string :name, :limit => 40
@@ -11,6 +11,6 @@ class CreateStates < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :states
+    drop_table :regions
   end
 end

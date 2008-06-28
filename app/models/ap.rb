@@ -1,7 +1,7 @@
 class Ap < ActiveRecord::Base
   belongs_to :city
   belongs_to :country
-  belongs_to :state
+  belongs_to :region
   has_many :clientes
 
   # tnx to perl! http://www.perlmonks.org/?node_id=83405

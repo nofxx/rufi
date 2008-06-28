@@ -1,4 +1,4 @@
-class State < ActiveRecord::Base
+class Region < ActiveRecord::Base
   belongs_to :country
   has_many :cities
 end

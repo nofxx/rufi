@@ -1,8 +1,7 @@
 class CreateCities < ActiveRecord::Migration
   def self.up
     create_table :cities do |t|
-      t.references :country
-      t.references :state
+      t.references :country, :region
       
       t.string :name, :limit => 40
       t.string :code, :limit => 2
