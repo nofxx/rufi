@@ -13,9 +13,9 @@ describe "/aps/index.html.erb" do
     ap_98.should_receive(:mask).and_return("MyString")
     ap_98.should_receive(:dhcp).and_return(false)
     ap_98.should_receive(:channel).and_return("1")
-    ap_98.should_receive(:pais).and_return()
-    ap_98.should_receive(:cidade).and_return()
-    ap_98.should_receive(:estado).and_return()
+    ap_98.should_receive(:pais_id).and_return(1)
+    ap_98.should_receive(:cidade_id).and_return(1)
+    ap_98.should_receive(:estado_id).and_return(1)
     ap_99 = mock_model(Ap)
     ap_99.should_receive(:essid).and_return("MyString")
     ap_99.should_receive(:mac).and_return("MyString")
@@ -25,9 +25,9 @@ describe "/aps/index.html.erb" do
     ap_99.should_receive(:mask).and_return("MyString")
     ap_99.should_receive(:dhcp).and_return(false)
     ap_99.should_receive(:channel).and_return("1")
-    ap_99.should_receive(:pais).and_return()
-    ap_99.should_receive(:cidade).and_return()
-    ap_99.should_receive(:estado).and_return()
+    ap_98.should_receive(:pais_id).and_return(1)
+    ap_98.should_receive(:cidade_id).and_return(1)
+    ap_98.should_receive(:estado_id).and_return(1)
 
     assigns[:aps] = [ap_98, ap_99]
   end
@@ -42,9 +42,9 @@ describe "/aps/index.html.erb" do
     response.should have_tag("tr>td", "MyString", 2)
     response.should have_tag("tr>td", false, 2)
     response.should have_tag("tr>td", "1", 2)
-    response.should have_tag("tr>td", , 2)
-    response.should have_tag("tr>td", , 2)
-    response.should have_tag("tr>td", , 2)
+    response.should have_tag("tr>td", "1", 2)
+    response.should have_tag("tr>td", "1", 2)
+    response.should have_tag("tr>td", "1", 2)
   end
 end
 
