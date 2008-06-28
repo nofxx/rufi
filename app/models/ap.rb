@@ -3,7 +3,10 @@ class Ap < ActiveRecord::Base
   belongs_to :country
   belongs_to :state
   has_many :clientes
-  #validates_presence_of :mac
+
+  # tnx to perl! http://www.perlmonks.org/?node_id=83405
+  validates_format_of :mac, :with => /^([0-9a-f]{2}([:-]|$)){6}$/i,
+          :message => "mac invalido"
   
 end
 

@@ -13,9 +13,9 @@ describe "/aps/edit.html.erb" do
     @ap.stub!(:mask).and_return("MyString")
     @ap.stub!(:dhcp).and_return(false)
     @ap.stub!(:channel).and_return("1")
-    @ap.stub!(:pais).and_return()
-    @ap.stub!(:cidade).and_return()
-    @ap.stub!(:estado).and_return()
+    @ap.stub!(:pais_id).and_return(1)
+    @ap.stub!(:cidade_id).and_return(1)
+    @ap.stub!(:estado_id).and_return(1)
     assigns[:ap] = @ap
   end
 
