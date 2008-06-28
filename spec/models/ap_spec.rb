@@ -17,12 +17,24 @@ describe Ap do
   before(:each) do
     @ap = Ap.new
   end
-
+#Inicio da area de validos
   it "should be valido" do
     @ap.attributes = attr_validos_ap
     @ap.should be_valid
   end
+  it "should have error on mac invalido" do
+    @ap.attributes = attr_validos_ap.with(:mac => "FF:FF:FF:FF:FF:FF")
+    @ap.should be_valid
+  end
   
+  it "should have error on mac invalido" do
+    @ap.attributes = attr_validos_ap.with(:mac => "ff:ff:ff:ff:ff:ff")
+    @ap.should be_valid
+  end
+
+#Fim da area de validos
+
+#Inicio da area de invalidos
   it do
     @ap.should have(1).error_on(:mac)
   end
@@ -36,6 +48,14 @@ describe Ap do
     @ap.attributes = attr_validos_ap.with(:mac => "isso nao eh um mac")
     @ap.should have(1).error_on(:mac)
   end
+  
+  it "should have error on mac invalido" do
+    @ap.attributes = attr_validos_ap.with(:mac => "00:00")
+    @ap.should have(1).error_on(:mac)
+  end
+
+#Fim da area de invalidos
+  
   
 end
 
