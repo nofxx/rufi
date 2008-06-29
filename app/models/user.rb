@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Authorization::StatefulRoles
+  
+  has_many :aps
+  
+  
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
   validates_uniqueness_of   :login,    :case_sensitive => false

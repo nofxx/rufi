@@ -4,7 +4,7 @@ class CreateClientes < ActiveRecord::Migration
       t.references :ap
       
       t.string :mac, :limit => 20
-      t.string :ip, :limit => 25
+      t.string :ip, :limit => 29
 
       t.timestamps
     end
