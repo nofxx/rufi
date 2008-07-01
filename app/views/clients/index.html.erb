@@ -1,4 +1,4 @@
-<h1>Listando clients</h1>
+<h1>Listando clientes</h1>
 <table>
   <tr>
     <th>Mac</th>
@@ -9,13 +9,13 @@
   <tr>
     <td><%=h client.mac %></td>
     <td><%=h client.ip %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', client %></td>
+    <td><%= link_to 'Editar', edit_client_path(client) %></td>
+    <td><%= link_to 'Apagar', client, :confirm => 'Tem certeza?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New client', new_client_path %>
+<%= link_to 'Novo cliente', new_client_path %>
