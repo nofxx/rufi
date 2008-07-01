@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @mensagem = "Bem-vindo"
+    @mensagem = "Bem-vindo".upcase
   end
 
 end
