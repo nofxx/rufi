@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :logfiles
+
   
    map.root :controller => 'home', :action => 'index'
    

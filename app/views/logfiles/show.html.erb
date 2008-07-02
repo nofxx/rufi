@@ -1,0 +1,33 @@
+<p>
+  <b>Type:</b>
+  <%#h @logfile.type %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @logfile.state %>
+</p>
+
+<p>
+  <b>Source content type:</b>
+  <%=h @logfile.source_content_type %>
+</p>
+
+<p>
+  <b>Source file name:</b>
+  <%=h @logfile.source_file_name %>
+</p>
+
+<p>
+  <b>Source file size:</b>
+  <%=h @logfile.source_file_size %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @logfile.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_logfile_path(@logfile) %> |
+<%= link_to 'Back', logfiles_path %>
