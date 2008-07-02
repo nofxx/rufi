@@ -1,4 +1,4 @@
-id,pais_id,nome,sigla
+id,country_id,name,code
 "11","1","Rondônia","RO"
 "12","1","Acre","AC"
 "13","1","Amazonas","AM"
