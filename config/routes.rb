@@ -1,11 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  
-   map.root :controller => 'home', :action => 'index'
+ 
+  map.root :controller => 'home', :action => 'index'
    
-   
+  map.resources :logfiles      
   map.resources :clients
   map.resources :cities
-  map.resources :states
+  map.resources :regions
   map.resources :countries
   
   map.resources :aps
