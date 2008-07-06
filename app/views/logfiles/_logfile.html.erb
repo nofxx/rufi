@@ -1,0 +1,16 @@
+<% form_for @logfile, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :source %><br />
+    <%= f.file_field :source %>
+  </p>
+
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>      

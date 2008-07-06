@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   include Authorization::StatefulRoles
   
   has_many :aps
+  has_many :clients
+  has_many :logfiles
   
   
   validates_presence_of     :login

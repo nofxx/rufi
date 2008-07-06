@@ -3,6 +3,7 @@ require 'ipaddr'
 
 class Client < ActiveRecord::Base
   belongs_to :ap
+  belongs_to :user
   
   ENC_TYPES = %w{ wep wpa wpa2-tkip wpa2-aes open }
 

@@ -1,6 +1,8 @@
 class CreateLogfiles < ActiveRecord::Migration
   def self.up
-    create_table :logfiles do |t|
+    create_table :logfiles do |t|   
+      t.references :user
+      
       t.string :type               
       t.string :name
       t.string :state

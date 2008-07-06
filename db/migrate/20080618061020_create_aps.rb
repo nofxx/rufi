@@ -1,7 +1,7 @@
 class CreateAps < ActiveRecord::Migration
   def self.up
     create_table :aps do |t|
-      t.references :country, :region, :city, :user
+      t.references :country, :region, :city, :user, :logfile
       
       t.string :essid, :key, :limit => 150
       

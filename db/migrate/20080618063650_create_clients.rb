@@ -1,7 +1,7 @@
 class CreateClients < ActiveRecord::Migration
   def self.up
     create_table :clients do |t|
-      t.references :country, :region, :city, :user, :ap
+      t.references :country, :region, :city, :user, :ap, :logfile
       
       t.string :essid, :key, :limit => 150
       
