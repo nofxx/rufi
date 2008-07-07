@@ -75,6 +75,16 @@ class Logfile < ActiveRecord::Base
                          
   end
 end
+
+  
+
+class Kismet < Logfile
+end
+
+# 
+# class Kismet < Logfile
+# end
+# 
     # KISMET LOG EXAMPLE => variable 'doc
     # wireless-network wep="false" number="1" last-time="Wed Jul  2 15:42:24 2008" cloaked="false" type="infrastructure" first-time="Wed Jul  2 15:38:53 2008">
     #     <ssid>LinkMais-APD01</ssid>
@@ -165,6 +175,3 @@ end
     # 
     # #   
 
-# 
-# class Kismet < Logfile
-# end

@@ -42,7 +42,8 @@ class LogfilesController < ApplicationController
   def create
     @logfile = Logfile.new(params[:logfile])
     @logfile.user = current_user
-    
+    #TODO: identify content_type
+    @logfile.type = 'Kismet'
     respond_to do |format|
       if @logfile.save  
         # Se salvar, parsear:

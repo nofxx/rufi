@@ -1,15 +1,15 @@
 development:
-  server: mail.site.com
+  server: mail.domain.com
   port: 25
-  domain: site.com
-	authentication: login
-	username: user@site.com
-	password: 123
-       
+  domain: domain.com
+  authentication: login
+  username: email_account_login
+  password: email_account_password
 production:
-  server: mail.site.com
-  port: 25
-  domain: site.com
-	authentication: login
-	username: user@site.com
-	password: 123
+  server: mail.domain.com
+  port: 465
+  domain: domain.com
+  authentication: login
+  username: email_account_login
+  password: email_account_password
+  tls: true
