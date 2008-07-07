@@ -9,7 +9,7 @@ class Ap < ActiveRecord::Base
   
   has_many :clientes
   
-  ENC_TYPES = %w{ wep wpa wpa2-tkip wpa2-aes open }
+  ENC_TYPES = %w{ WEP WPA wpa2-tkip wpa2-aes open None }
 
   validates_each :ip, :allow_nil => true, :allow_blank => true do |record, attr, value|
     IPAddr.new(value) rescue record.errors.add attr, 'não é um ip válido' 
@@ -19,16 +19,16 @@ class Ap < ActiveRecord::Base
   
   
   # tnx to perl! http://www.perlmonks.org/?node_id=83405
-  validates_format_of :mac, :with => /^([0-9a-f]{2}([:-]|$)){6}$/i,
-          :message => "mac invalido"
+ validates_format_of :mac, :with => /^([0-9a-f]{2}([:-]|$)){6}$/i,
+         :message => "mac invalido"
           
   validates_numericality_of :channel, :only_integer => true, 
-          :greater_than => 0, :less_than => 55, :allow_nil => true
+          :greater_than_or_equal_to => 0, :less_than => 55, :allow_nil => true
   
   validates_numericality_of :mask, :only_integer => true, 
           :greater_than => 0, :less_than => 129, :allow_nil => true
           
-  validates_inclusion_of :enc, :in => ENC_TYPES#.map {|disp, value| value}  
+  validates_inclusion_of :enc, :in => ENC_TYPES, :allow_nil => true#.map {|disp, value| value}  
   
   def valid_ip
     IPAddr.new(_self.ip).mask(_self.mask)

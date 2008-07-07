@@ -6,7 +6,7 @@ describe "/logfiles/edit.html.erb" do
   before(:each) do
     assigns[:logfile] = @logfile = stub_model(Logfile,
       :new_record? => false,
-      :type => "value for type",
+#      :type => "value for type",
       :state => "value for state",
       :source_content_type => "value for source_content_type",
       :source_file_name => "value for source_file_name",
@@ -21,7 +21,7 @@ describe "/logfiles/edit.html.erb" do
     response.should have_tag("form[action=#{logfile_path(@logfile)}][method=post]") do
       with_tag('input#logfile_type[name=?]', "logfile[type]")
       with_tag('input#logfile_state[name=?]', "logfile[state]")
-      with_tag('input#logfile_source_content_type[name=?]', "logfile[source_content_type]")
+#      with_tag('input#logfile_source_content_type[name=?]', "logfile[source_content_type]")
       with_tag('input#logfile_source_file_name[name=?]', "logfile[source_file_name]")
       with_tag('input#logfile_source_file_size[name=?]', "logfile[source_file_size]")
       with_tag('textarea#logfile_note[name=?]', "logfile[note]")

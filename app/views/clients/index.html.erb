@@ -1,12 +1,14 @@
 <h1>Listando clientes</h1>
 <table>
-  <tr>
+  <tr> 
+    <th>AP</th> 
     <th>Mac</th>
     <th>Ip</th>
   </tr>
 
 <% for client in @clients %>
-  <tr>
+  <tr> 
+    <td><%=h client.ap.essid if client.ap %></td>    
     <td><%=h client.mac %></td>
     <td><%=h client.ip %></td>
     <td><%= link_to 'Ver', client %></td>
