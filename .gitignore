@@ -2,6 +2,7 @@
 thumbs.db
 log/*.log
 config/database.yml
+config/email.yml
 tmp/**/*
 db/*.sqlite3*
 doc/api

@@ -1,8 +1,14 @@
-<li><%= link_to "Aps" , aps_path %></li>
-<li><%= link_to "Logfiles" , logfiles_path %></li>
-<li><%= link_to "Usuarios", users_path %></li>         
-<li><%= link_to "Clientes", clients_path %></li>   
-<br>
-<li><%= link_to "Cidades" , cities_path %></li>
-<li><%= link_to "Estados" , regions_path %></li>
-<li><%= link_to "Paises", countries_path %></li>
+<% if logged_in? %>
+	<li><%= link_to "Logfiles" , logfiles_path %></li>	         
+	<li><%= link_to "Aps" , aps_path %></li>  
+	<li><%= link_to "Clientes", clients_path %></li>   
+	<% if admin? %>
+		<li><%= link_to "Usuarios", users_path %></li>
+		<li><%= link_to "Cidades" , cities_path %></li>
+		<li><%= link_to "Estados" , regions_path %></li>
+		<li><%= link_to "Paises", countries_path %></li>
+	<% end %>
+<% else %>
+  	<li><%= link_to "login" , login_path %></li> 
+  	<li><%= link_to "sign up" , signup_path %></li>	
+<% end %>

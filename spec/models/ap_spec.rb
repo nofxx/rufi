@@ -5,14 +5,14 @@ module ApSpecHelper
   def attr_validos_ap
     {
       :essid => 'Radio Pirata',
-      :enc => 'wep',
+      :enc => 'WEP',
       :mac => '00:01:02:03:04:05',
       :lat => '178.842984',
       :lon => -176.847979,
       :ip => '200.80.70.10',
       :mask => 16,
       :key => 'HDgDHdhdGdhdgDHgd3810383hdhdkd8dhd',
-      :channel => 10,
+      :channel => 10,     
       :dhcp => 1
     }
   end
@@ -34,7 +34,10 @@ describe Ap do
     end
   
     it "should incrementar o numero no banco" do
+        lambda do
         @ap.attributes = attr_validos_ap
+        @ap.save
+      end.should change(Ap, :count).by(1)
     end
   
     it "should accept upcase letters" do
@@ -62,11 +65,7 @@ describe Ap do
       @ap.should be_valid
     end
     
-    after(:each) do
-      lambda do
-         @ap.save 
-      end.should change(Ap, :count).by(1)
-    end
+
     
   end
 
@@ -135,12 +134,6 @@ describe Ap do
       @ap.should have(1).error_on(:lon)
     end
     
-    after(:each) do
-      lambda do
-        @ap.save
-      end.should_not change(Ap, :count)
-    end
-
   end
   
 end

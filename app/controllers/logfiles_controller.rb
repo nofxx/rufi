@@ -41,7 +41,8 @@ class LogfilesController < ApplicationController
   # POST /logfiles.xml
   def create
     @logfile = Logfile.new(params[:logfile])
-
+    @logfile.user = current_user
+    
     respond_to do |format|
       if @logfile.save  
         # Se salvar, parsear:

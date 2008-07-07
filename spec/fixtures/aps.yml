@@ -3,7 +3,7 @@
 one:
   essid: Radio Pirata do Rock
   mac: 00:55:44:44:33
-  enc: wpa
+  enc: WPA
   key: rock
   ip: 192.168.1.1
   mask: 24
@@ -16,7 +16,7 @@ one:
 two:
   essid: Radio 2 Pirata do Rock
   mac: 00:55:46:44:33
-  enc: wep
+  enc: WEP
   key: rock
   ip: 10.1.1.1
   mask: 8

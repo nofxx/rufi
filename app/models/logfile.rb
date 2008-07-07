@@ -33,11 +33,11 @@ class Logfile < ActiveRecord::Base
   event :failed do
     transitions :from => :parsing, :to => :error
   end
-       
-     
+  
 
   # #   
-  # LOG PARSERS  
+  # LOG PARSERS 
+  # 
   # This method is called from the controller and takes care of the converting
   def parse_log
     self.parse!
@@ -47,20 +47,20 @@ class Logfile < ActiveRecord::Base
     convertido = (doc/'wireless-network').each do |ponto|   
       ap = Ap.new   
       ap.attributes = {
-        :essid =>  (ponto/:ssid).text, 
-        :mac => (ponto/:bssid).text,
-        :channel => (ponto/:channel).text.to_i, #8 #'channel'.to_i
-        :enc => (ponto/:encryption).text,  
-        :ip => (ponto/'ip-address'/'ip-range').text
-           }              
+        :essid    =>  (ponto/:ssid).text, 
+        :mac      =>  (ponto/:bssid).text,
+        :channel  =>  (ponto/:channel).text.to_i, #8 #'channel'.to_i
+        :enc      =>  (ponto/:encryption).text,  
+        :ip       =>  (ponto/'ip-address'/'ip-range').text
+      }              
       ap.save    
       
         (ponto/'wireless-client').each do |client|
           cli = Client.new
           cli.attributes = {                    
-            :ap => ap,
-            :mac =>  (client/'client-mac').text,  
-            :ip => (client/'client-ip-address').text                        
+            :ap     =>    ap,
+            :mac    =>    (client/'client-mac').text,  
+            :ip     =>    (client/'client-ip-address').text                        
           }  
           cli.save 
                  
@@ -72,7 +72,9 @@ class Logfile < ActiveRecord::Base
     else
       self.failed!
     end
-                    
+                         
+  end
+end
     # KISMET LOG EXAMPLE => variable 'doc
     # wireless-network wep="false" number="1" last-time="Wed Jul  2 15:42:24 2008" cloaked="false" type="infrastructure" first-time="Wed Jul  2 15:38:53 2008">
     #     <ssid>LinkMais-APD01</ssid>
@@ -163,8 +165,6 @@ class Logfile < ActiveRecord::Base
     # 
     # #   
 
-  end
-  
-
-  
-end
+# 
+# class Kismet < Logfile
+# end

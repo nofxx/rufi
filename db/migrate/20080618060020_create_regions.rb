@@ -1,7 +1,7 @@
 class CreateRegions < ActiveRecord::Migration
   def self.up
     create_table :regions do |t|
-      t.references :country
+      t.belongs_to :country
             
       t.string :name, :limit => 40
       t.string :code, :limit => 2

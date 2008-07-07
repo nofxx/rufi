@@ -26,7 +26,7 @@ describe "/logfiles/index.html.erb" do
 
   it "should render list of logfiles" do
     render "/logfiles/index.html.erb"
-    response.should have_tag("tr>td", "value for type", 2)
+  #  response.should have_tag("tr>td", "value for type", 2)
     response.should have_tag("tr>td", "value for state", 2)
     response.should have_tag("tr>td", "value for source_content_type", 2)
     response.should have_tag("tr>td", "value for source_file_name", 2)

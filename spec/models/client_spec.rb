@@ -5,7 +5,6 @@ module ClientSpecHelper
   def attr_validos_client
     {
       :essid => 'Radio Pirata',
-      :enc => 'wep',
       :mac => '00:01:02:03:04:05',
       :lat => '178.842984',
       :lon => -176.847979,
@@ -35,7 +34,11 @@ describe Client do
     end
   
     it "should incrementar o numero no banco" do
-        @client.attributes = attr_validos_client
+
+        lambda do      
+                  @client.attributes = attr_validos_client      
+           @client.save 
+        end.should change(Client, :count).by(1)
     end
   
     it "should accept upcase letters" do
@@ -68,12 +71,7 @@ describe Client do
       @client.attributes = attr_validos_client.with(:ap => @ap)
     end
     
-    after(:each) do
-      lambda do
-         @client.save 
-      end.should change(Client, :count).by(1)
-    end
-    
+
   end
   
   describe "Clients invalidos" do
@@ -84,7 +82,11 @@ describe Client do
 
     it do
       @client.should have(1).error_on(:mac)
-    end
+    end  
+      
+ # lambda do
+ #   @client.save
+ # end.should_not change(Client, :count)
   
     it "should have error on mac vazio (alternate)" do
       @client.attributes = attr_validos_client.except(:mac)
@@ -141,11 +143,7 @@ describe Client do
       @client.should have(1).error_on(:lon)
     end
     
-    after(:each) do
-      lambda do
-        @client.save
-      end.should_not change(Client, :count)
-    end
+
 
   end
 
