@@ -48,7 +48,7 @@ class LogfilesController < ApplicationController
       if @logfile.save  
         # Se salvar, parsear:
         # TODO: parse 
-        @logfile.parse_log
+        @logfile.parse_log(current_user)
         
         flash[:notice] = 'Logfile was successfully created.'
         format.html { redirect_to(@logfile) }

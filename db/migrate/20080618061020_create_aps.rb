@@ -1,7 +1,7 @@
 class CreateAps < ActiveRecord::Migration
   def self.up
     create_table :aps do |t| 
-      t.belongs_to :user
+      t.belongs_to :user, :null => false
       t.belongs_to :country, :region, :city, :logfile
       
       t.string :essid, :key, :limit => 150      

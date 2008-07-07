@@ -39,7 +39,7 @@ class Logfile < ActiveRecord::Base
   # LOG PARSERS 
   # 
   # This method is called from the controller and takes care of the converting
-  def parse_log
+  def parse_log(user)
     self.parse!
     doc = Hpricot(open("#{RAILS_ROOT}/files/logfiles/sources/#{self.id}/original_#{self.source_file_name}"))
  
@@ -47,22 +47,25 @@ class Logfile < ActiveRecord::Base
     convertido = (doc/'wireless-network').each do |ponto|   
       ap = Ap.new   
       ap.attributes = {
+        :user     =>  user,
         :essid    =>  (ponto/:ssid).text, 
         :mac      =>  (ponto/:bssid).text,
         :channel  =>  (ponto/:channel).text.to_i, #8 #'channel'.to_i
         :enc      =>  (ponto/:encryption).text,  
         :ip       =>  (ponto/'ip-address'/'ip-range').text
-      }              
+      }
+      
       ap.save    
       
         (ponto/'wireless-client').each do |client|
           cli = Client.new
-          cli.attributes = {                    
+          cli.attributes = { 
+            :user   =>    user,
             :ap     =>    ap,
             :mac    =>    (client/'client-mac').text,  
             :ip     =>    (client/'client-ip-address').text                        
           }  
-          cli.save 
+        cli.save 
                  
       end
     end           
