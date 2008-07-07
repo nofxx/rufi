@@ -1,3 +1,5 @@
 <div id="footer">
-footer
+<% if logged_in? %>
+  Welcome <%= current_user.login %>,	<li><%= link_to "Sair" , logout_path %></li>	         
+<% end %> 
 </div>
