@@ -1,16 +1,8 @@
-<h1>Listing logfiles</h1>
-
-<table>
-  <tr>
-    <th>Type</th>
-    <th>State</th>
-    <th>Source content type</th>
-    <th>Source file name</th>
-    <th>Source file size</th>
-    <th>Note</th>
-  </tr>
-
-<% for logfile in @logfiles %>
+<h1>Listando logfiles</h1>
+<p>
+	<%= link_to 'Novo logfile', new_logfile_path %>
+</p>
+<% table @logfiles, ['Type', 'State', 'Source content type', 'Source file names', 'Source file size', 'Note'] do |logfile| %>
   <tr>
     <td><%=h logfile.class %></td>
     <td><%=h logfile.state %></td>
@@ -18,13 +10,12 @@
     <td><%=h logfile.source_file_name %></td>
     <td><%=h logfile.source_file_size %></td>
     <td><%=h logfile.note %></td>
-    <td><%= link_to 'Show', logfile_path(logfile) %></td>
-    <td><%= link_to 'Edit', edit_logfile_path(logfile) %></td>
-    <td><%= link_to 'Destroy', logfile_path(logfile), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="actions">
+    	<%= link_to 'Ver', logfile_path(logfile) %>
+    	<%= link_to 'Editar', edit_logfile_path(logfile) %>
+    	<%= link_to 'Apagar', logfile_path(logfile), :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
+    </td>
   </tr>
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New logfile', new_logfile_path %>

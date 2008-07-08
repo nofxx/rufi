@@ -1,0 +1,197 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url(../images/background.png);
+	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
+	font-size: 12px;
+}
+
+div#page {
+	position: relative;
+	margin: auto;
+	width: 800px;	
+}
+
+div#content {
+	background-color: #FFF;
+	border: 6px solid #375787;
+	margin: 8px 0px;
+	padding: 8px;
+	position: relative;
+}
+
+div#account_info {
+	background: transparent url(../images/account.png) no-repeat;
+	color: #FFF;
+	font-weight: bold;
+	position: absolute;	
+	padding-left: 20px;
+	top: 4px;
+	right: 0px;
+}
+
+div#account_info a {
+	background-color: #FFF;
+	padding: 4px;
+}
+
+div#header {
+	margin-top: 4px;
+}
+
+div#logo {
+	background: transparent url(../images/logo.png) no-repeat;
+	height: 74px;
+	width: 121px;
+}
+
+div#menu {
+	position: absolute;	
+	top: 50px;
+	right: 0px;
+}
+
+div#menu ul {
+	list-style-type: none;
+}
+
+div#menu ul li {
+	display: inline;
+	margin-left: 2px;
+}
+
+div#menu ul li a {
+	background-color: #375787;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 8px;
+}
+
+div#menu ul li a:hover {
+	border-bottom: 4px solid #FFF;
+}
+
+a {
+	color: #0000FF;
+}
+
+a.destroy {
+	color: #D11111;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a img {
+	border: 0
+}
+
+h1 {
+	border-bottom: 1px dotted #CCC;
+	margin-bottom: 8px;;
+}
+
+p {
+	margin: 6px 0px;
+}
+
+table.list {
+	border-collapse: collapse;
+	text-align: left;
+	width: 100%;
+}
+
+table.list thead th {
+	padding: 4px;
+	background: transparent url(../images/table_header.jpg) repeat-x;
+	height: 42px;
+}
+
+table.list tbody td {
+	border-bottom: 1px solid #C9C9C9;
+	padding: 4px;
+}
+
+table.list tbody tr:hover {
+	background-color: #F3F3AB;
+}
+
+table.list tbody td.actions {
+	text-align: right;
+	width: 18%;
+}
+
+td.actions {
+	text-align: right;
+}
+
+td.actions a {
+	margin-left: 2px;
+}
+
+label {
+	font-weight: bold;
+}
+
+div.errorExplanation {
+	border: 2px solid #e81313;
+}
+
+div.errorExplanation h2 {
+	color: #fff;
+	font-size: 16px;
+	background-color: #e81313;
+	padding: 4px;
+}
+
+div.errorExplanation p {
+	padding: 8px;
+	margin: 0px;
+}
+
+div.errorExplanation ul {
+	margin-left: 18px;
+	padding: 8px;
+	font-weight: bold;
+}
+
+div#flash div {
+	font-weight: bold;
+	padding: 4px;
+}
+
+div#flash div.error {
+	background-color: #f4cccc;
+	border: 2px solid #ea4747;
+}
+
+div#flash div.error span {
+	background: transparent url(../images/error.png) no-repeat;
+	padding-left: 20px;
+}
+
+div#flash div.notice {
+	background-color: #b3b3e3;
+	border: 2px solid #7474ec;
+}
+
+div#flash div.notice span {
+	background: transparent url(../images/notice.png) no-repeat;
+	padding-left: 20px;
+}
+
+div#flash div.sucess {
+	background-color: #aceeac;
+	border: 2px solid #5abd5a;
+}
+
+div#flash div.sucess span {
+	background: transparent url(../images/sucess.png) no-repeat;
+	padding-left: 20px;
+}

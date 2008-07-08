@@ -1,21 +1,8 @@
 <h1>Listando Pontos de acesso</h1>
-
-<table>
-  <tr>
-    <th>Essid</th>
-    <th>MAC</th>
-    <th>Enc</th>
-    <th>Key</th>
-    <th>Ip</th>
-    <th>Mask</th>
-    <th>Dhcp</th>
-    <th>Canal</th>
-    <th>Pa&iacute;s</th>
-    <th>Cidade</th>
-    <th>Estado</th>
-  </tr>
-
-<% for ap in @aps %>
+<p>
+	<%= link_to 'Novo ap', new_ap_path %>
+</p>
+<% table @aps, ['Essid', 'MAC', 'Enc', 'Key', 'Ip', 'Mask', 'Dhcp', 'Canal', 'País', 'Cidade', 'Estado'] do |ap| %>
   <tr>
     <td><%=h ap.essid %></td>
     <td><%=h ap.mac %></td>
@@ -28,13 +15,10 @@
     <td><%=h ap.country %></td>
     <td><%=h ap.city %></td>
     <td><%=h ap.region %></td>
-    <td><%= link_to 'Ver', ap %></td>
-    <td><%= link_to 'Editar', edit_ap_path(ap) %></td>
-    <td><%= link_to 'Apagar', ap, :confirm => 'Tem certeza?', :method => :delete %></td>
+    <td class="actions">
+    	<%= link_to 'Ver', ap %>
+    	<%= link_to 'Editar', edit_ap_path(ap) %>
+    	<%= link_to 'Apagar', ap, :confirm => 'Tem certeza?', :method => :delete, :class => 'destroy' %>
+    </td>
   </tr>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'Novo ap', new_ap_path %>
