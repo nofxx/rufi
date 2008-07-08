@@ -6,6 +6,8 @@
   <tr> 
     <td width='150px'><%= link_to client.ap.essid, client.ap if client.ap %></td>    
     <td><%= link_to client.mac, client %></td>
+    <td></td>
+    <td></td>
     <td><%=h client.ip %></td>
     <td><%=h client.mask %></td>
     <td><%=h client.channel %></td>
@@ -15,7 +17,7 @@
     <td class="actions"> 
     	<%= link_to 'Editar', edit_client_path(client) %>
     	<%= link_to 'Apagar', client, :confirm => 'Tem certeza?', :method => :delete %>
-		</td>
+	</td>
   </tr>
 <% end %>
 
