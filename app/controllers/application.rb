@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   # 
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-
+                              
+  before_filter :login_required 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '4008a843b7f2120eb3e66893063f1ba9'
