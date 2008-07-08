@@ -1,4 +1,7 @@
 class ClientsController < ApplicationController
+  
+  protect_from_forgery :except => :index
+
   # GET /clients
   # GET /clients.xml
   def index
@@ -7,6 +10,14 @@ class ClientsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clients }
+      format.json {
+        return_data = Hash.new
+        return_data[:page] = 1
+        return_data[:count] = Client.count
+        return_data[:rows] = @clients.collect { |c| {:cell => [c.essid, c.mac]} }
+        
+        render :json => return_data.to_json, :template => false
+      }
     end
   end
 
@@ -82,4 +93,8 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end
+
+
+

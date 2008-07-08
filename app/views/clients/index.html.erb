@@ -2,6 +2,21 @@
 <p>
 	<%= link_to 'Novo cliente', new_client_path %>  
 </p>
+
+<table id="flexigrid"></table>
+<script>
+  $('#flexigrid').flexigrid({
+    url: 'http://localhost:3000/clients',
+    method: 'get',
+    dataType: 'json',    
+    colModel : [
+      {display: 'Essid', name : 'essid', width : 100},
+      {display: 'MAC', name : 'mac', width : 100}
+    ]     
+  });
+</script>
+
+
 <% table @clients, ['Essid', 'MAC', 'Enc', 'Key', 'IP', 'Mask', 'Canal', 'País', 'Cidade', 'Estado'] do |client| %>
   <tr> 
     <td width='150px'><%= link_to client.ap.essid, client.ap if client.ap %></td>    
@@ -20,4 +35,3 @@
 	</td>
   </tr>
 <% end %>
-
