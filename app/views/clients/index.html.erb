@@ -6,7 +6,7 @@
 <table id="flexigrid"></table>
 <script>
   $('#flexigrid').flexigrid({
-    url: 'http://localhost:3000/clients',
+    url: 'http://localhost:3000/clients.json',
     method: 'get',
     dataType: 'json',    
     colModel : [
@@ -15,7 +15,6 @@
     ]     
   });
 </script>
-
 
 <% table @clients, ['Essid', 'MAC', 'Enc', 'Key', 'IP', 'Mask', 'Canal', 'País', 'Cidade', 'Estado'] do |client| %>
   <tr> 
