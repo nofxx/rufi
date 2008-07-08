@@ -18,4 +18,5 @@ public/uploads/**/*
 *.tmproj
 coverage/*
 *~
-files/logfiles/**/*
+files/**/*
+

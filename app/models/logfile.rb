@@ -16,7 +16,11 @@ class Logfile < ActiveRecord::Base
   has_attached_file :source, 
     :path => ":rails_root/files/:class/:attachment/:id/:style_:basename.:extension",
     :url => "/:class/:attachment/:id/:style_:basename.:extension"
+                                                            
+  LOGFILE_TYPES = %w{ Kismet Airodump Airstumbler }
 
+  validates_inclusion_of :type, :in => LOGFILE_TYPES 
+  
   # Paperclip Validations
   validates_attachment_presence :source
   #validates_attachment_content_type :source, :content_type => ‘video/quicktime’
@@ -101,6 +105,12 @@ end
   
 
 class Kismet < Logfile
+end    
+
+class Airodump < Logfile
+end
+
+class Airstumbler < Logfile
 end
 
 # 

@@ -1,9 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-module ClientSpecHelper
-  
+module ClientSpecHelper 
   def attr_validos_client
-    {
+    {            
+      :user_id => 1,
       :essid => 'Radio Pirata',
       :mac => '00:01:02:03:04:05',
       :lat => '178.842984',
@@ -17,10 +17,9 @@ module ClientSpecHelper
 end
 
 describe Client do
-  
-  fixtures :aps
-  
-  include ClientSpecHelper
+  include ClientSpecHelper 
+    
+  fixtures :aps, :users
   
   describe "Clients validos" do
     
@@ -34,11 +33,10 @@ describe Client do
     end
   
     it "should incrementar o numero no banco" do
-
-        lambda do      
-                  @client.attributes = attr_validos_client      
-           @client.save 
-        end.should change(Client, :count).by(1)
+      lambda do      
+        @client.attributes = attr_validos_client      
+        @client.save 
+      end.should change(Client, :count).by(1)
     end
   
     it "should accept upcase letters" do
@@ -52,7 +50,12 @@ describe Client do
     end
     
     it "should accept ipv6 addresses" do
-      @client.attributes = attr_validos_client.with(:ip => 'fe80::fcfd:43ff:fe12:d079')
+      @client.attributes = attr_validos_client.with(:ip => "fe80::fcfd:43ff:fe12:d079")
+      @client.should be_valid
+    end 
+    
+    it "should accept ipv6 upcase addresses" do
+      @client.attributes = attr_validos_client.with(:ip => "FE80::FCFD:43FF:FE12:D079")
       @client.should be_valid
     end
     

@@ -3,7 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 module ApSpecHelper
   
   def attr_validos_ap
-    {
+    {            
+      :user_id => 1,
       :essid => 'Radio Pirata',
       :enc => 'WEP',
       :mac => '00:01:02:03:04:05',
@@ -18,7 +19,9 @@ module ApSpecHelper
   end
 end
 
-describe Ap do
+describe Ap do    
+  
+  fixtures :users
   
   include ApSpecHelper
   
