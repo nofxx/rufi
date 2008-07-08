@@ -1,5 +1,6 @@
 .DS_Store
 thumbs.db
+Thumbs.db
 log/*.log
 config/database.yml
 config/email.yml
