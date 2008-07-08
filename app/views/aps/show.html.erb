@@ -54,6 +54,9 @@
   <%=h @ap.region %>
 </p>
 
+<% for client in @ap.clients %>
+	<p>Cliente: <%= client.mac %></p>
+	<% end %>
 
 <%= link_to 'Editar', edit_ap_path(@ap) %> |
 <%= link_to 'Voltar', aps_path %>

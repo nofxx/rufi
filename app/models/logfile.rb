@@ -1,8 +1,15 @@
 require 'hpricot'
 
-class Logfile < ActiveRecord::Base   
+class Logfile < ActiveRecord::Base     
+  
+  # #
+  # RELATIONS
+  #
   belongs_to :user      
   
+  has_many :aps, :dependent => :destroy 
+  has_many :clients, :dependent => :destroy
+    
   # #
   # Paperclip
   # http://www.thoughtbot.com/projects/paperclip
@@ -40,29 +47,41 @@ class Logfile < ActiveRecord::Base
   # 
   # This method is called from the controller and takes care of the converting
   def parse_log(user)
-    self.parse!
+    self.parse! 
+    
     doc = Hpricot(open("#{RAILS_ROOT}/files/logfiles/sources/#{self.id}/original_#{self.source_file_name}"))
  
    
-    convertido = (doc/'wireless-network').each do |ponto|   
-      ap = Ap.new   
+    convertido = (doc/'wireless-network').each do |ponto|
+      
+      essid = (ponto/:ssid).text    
+      mac = (ponto/:bssid).text 
+        
+      ap = user.aps.find_by_mac(mac) || Ap.new   
+                          
+
       ap.attributes = {
-        :user     =>  user,
-        :essid    =>  (ponto/:ssid).text, 
-        :mac      =>  (ponto/:bssid).text,
+        :user     =>  user,   
+        :logfile  =>  self,
+        :essid    =>  essid,
+        :mac      =>  mac,
         :channel  =>  (ponto/:channel).text.to_i, #8 #'channel'.to_i
         :enc      =>  (ponto/:encryption).text,  
         :ip       =>  (ponto/'ip-address'/'ip-range').text
-      }
-      
+      }   
       ap.save    
       
         (ponto/'wireless-client').each do |client|
-          cli = Client.new
+                             
+          mac = (client/'client-mac').text
+          
+          cli = user.clients.find_by_mac(mac) || Client.new
+          
           cli.attributes = { 
-            :user   =>    user,
+            :user   =>    user, 
+            :logfile  =>  self,             
             :ap     =>    ap,
-            :mac    =>    (client/'client-mac').text,  
+            :mac    =>    mac,  
             :ip     =>    (client/'client-ip-address').text                        
           }  
         cli.save 

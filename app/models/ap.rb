@@ -5,12 +5,14 @@ class Ap < ActiveRecord::Base
   # #
   # RELATIONS  
   #  
-  belongs_to :user
+  belongs_to :user  
+  belongs_to :logfile
+  
   belongs_to :city
   belongs_to :country
   belongs_to :region
   
-  has_many :clientes
+  has_many :clients, :dependent => :destroy  
    
   # #
   # VALIDATION

@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   include Authorization::StatefulRoles
   
-  has_many :aps
-  has_many :clients
-  has_many :logfiles
+  has_many :aps, :dependent => :destroy  
+  has_many :clients, :dependent => :destroy  
+  has_many :logfiles, :dependent => :destroy  
   
   
   validates_presence_of     :login

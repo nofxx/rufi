@@ -1,23 +1,22 @@
-<h1>Listando clientes</h1>
-<table>
+<h1>Listando clientes (<%= @clients.length %>)</h1>
+<p>
+	<%= link_to 'Novo cliente', new_client_path %>  
+</p>
+<% table @clients, ['Essid', 'MAC', 'Enc', 'Key', 'IP', 'Mask', 'Canal', 'País', 'Cidade', 'Estado'] do |client| %>
   <tr> 
-    <th>AP</th> 
-    <th>Mac</th>
-    <th>Ip</th>
-  </tr>
-
-<% for client in @clients %>
-  <tr> 
-    <td><%=h client.ap.essid if client.ap %></td>    
+    <td width='150px'><%=h client.ap.essid if client.ap %></td>    
     <td><%=h client.mac %></td>
     <td><%=h client.ip %></td>
-    <td><%= link_to 'Ver', client %></td>
-    <td><%= link_to 'Editar', edit_client_path(client) %></td>
-    <td><%= link_to 'Apagar', client, :confirm => 'Tem certeza?', :method => :delete %></td>
+    <td><%=h client.mask %></td>
+    <td><%=h client.channel %></td>
+    <td><%=h client.country %></td>
+    <td><%=h client.city %></td>
+    <td><%=h client.region %></td>  
+    <td class="actions"> 
+    	<%= link_to 'Ver', client %>
+    	<%= link_to 'Editar', edit_client_path(client) %>
+    	<%= link_to 'Apagar', client, :confirm => 'Tem certeza?', :method => :delete %>
+		</td>
   </tr>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'Novo cliente', new_client_path %>
