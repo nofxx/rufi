@@ -1,8 +1,8 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-	def table (collection, headers, options = {}, &proc)
-		options.reverse_merge!({:class => 'list',	:border => 0,	:width => '100%', :include_action => true	})
+	def table(collection, headers, options = {}, &proc)
+		options.reverse_merge!({:class => 'list',	:border => 0,	:width => '100%', :include_action => true })
 		
 		output = "<table class=\"#{options[:class]}\" border=\"#{options[:border].to_s}\" width=\"#{options[:width]}\" >\n"
 		output << "<thead>\n\t"
@@ -22,6 +22,10 @@ module ApplicationHelper
 			flashes += '</div>'
 		end
 		flashes
+	end
+	
+	def flexgrid(collection, )
+	
 	end
 
 end
