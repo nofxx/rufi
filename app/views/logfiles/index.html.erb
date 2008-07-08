@@ -2,16 +2,14 @@
 <p>
 	<%= link_to 'Enviar arquivo!', new_logfile_path %>
 </p>
-<% table @logfiles, ['Type', 'State', 'Source content type', 'Source file names', 'Source file size', 'Note'] do |logfile| %>
+<% table @logfiles, ['Type', 'Parse', 'File Names', 'File sizes', 'Note'] do |logfile| %>
   <tr>
-    <td><%=h logfile.class %></td>
+    <td><%= link_to logfile.class, logfile_path(logfile) %></td>
     <td><%=h logfile.state %></td>
-    <td><%=h logfile.source_content_type %></td>
     <td><%=h logfile.source_file_name %></td>
-    <td><%=h logfile.source_file_size %></td>
+    <td><%=h number_to_human_size(logfile.source_file_size, 0) %></td>
     <td><%=h logfile.note %></td>
     <td class="actions">
-    	<%= link_to 'Ver', logfile_path(logfile) %>
     	<%= link_to 'Editar', edit_logfile_path(logfile) %>
     	<%= link_to 'Apagar', logfile_path(logfile), :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
     </td>

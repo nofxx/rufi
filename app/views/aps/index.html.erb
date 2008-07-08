@@ -4,7 +4,7 @@
 </p>
 <% table @aps, ['Essid', 'MAC', 'Enc', 'Key', 'IP', 'Clientes', 'DHCP', 'Canal', 'Cidade', 'Estado'] do |ap| %>
   <tr>
-    <td><%=h ap.essid %></td>
+    <td><%= link_to ap.essid, ap %></td>
     <td><%=h ap.mac %></td>
     <td><%=h ap.enc %></td>
     <td><%=h ap.key %></td>
@@ -15,7 +15,6 @@
     <td><%=h ap.city %></td>
     <td><%=h ap.region %></td>
     <td class="actions">
-    	<%= link_to 'Ver', ap %>
     	<%= link_to 'Editar', edit_ap_path(ap) %>
     	<%= link_to 'Apagar', ap, :confirm => 'Tem certeza?', :method => :delete, :class => 'destroy' %>
     </td>
