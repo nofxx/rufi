@@ -1,0 +1,44 @@
+= js.erb auto include plugin
+
+Doing unobtrusive Javascript in Rails is quite hard. There are several approaches that can be taken but most of them result in the fact that no erb code can be executed in the Javascript.
+
+This plugin combines the basic idea of the Javascript Auto Include Plugin of the guys at media72 ( http://blog.media72.net/2008/05/13/javascript-auto-include-rails-plugin/) with the power of js.erb templates which are built in to Rails. It also requires much less overhead in the code than other techniques.
+
+
+== Usage
+
+In your ApplicationController:
+
+  class ApplicationController < ActionController::Base
+    activate_js_erb_auto_include
+  end
+
+
+Then add a format.js hook in the respond_to block of your other controllers where you want to activate auto loading of Javascript files:
+  
+  class EntriesController < ApplicationController
+      
+    def index
+      ...
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+  end
+	
+
+In your layout (or where you want the Javascript script tags to be):
+
+  <html> 
+    <head>
+
+      <%= javascript_include_tag :defaults %>
+      <%= js_erb_auto_include_tag %>
+      ...
+
+
+Now create the Javascript files that should be automatically loaded. For example if you want to load Javascript for yourapp.com/entries/index, you should create the file app/views/entries/index.js.erb (which corresponds to the standard Rails naming conventions).
+
+
+That's all there's to it. 
