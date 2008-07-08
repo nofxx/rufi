@@ -1,3 +1,13 @@
-== Ruby (and Rails) Wifi
+== Ruby Wifi  
 
-Objective => analyze, show (with style) and share wifi sniffers/dumpers logs.
+	Objective => analyze, show (with style) and share wifi sniffer`s logs.
+
+	Supported sniffers (planned) => Kismet, Airodump (aircrack-ng suite), Airstumbler
+	
+== Install
+
+	Set up you preferred database and database.yml accordantly. 
+	
+	Set up email.yml. (example included)
+	
+	Thats all.
