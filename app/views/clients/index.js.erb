@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	<% 
-		flexigrid('/clients', :sortname => 'ip', :title => 'Clientes') do |c,s|
-		
+		flexigrid('/clients', :sortname => 'ip', :title => 'Clientes', :useRp => true) do |c,s,b|
+					
 			c << {:display => 'Essid', :name => 'ip', :width => 50} 
 			c << {:display => 'MAC', :name => 'mac', :width => 100}      
 			c << {:display => 'mask', :name => 'mask', :width => 100}    
@@ -10,8 +10,17 @@ $(document).ready(function(){
 			s << {:display => 'Essid', :name => 'ip'}
 			s << {:display => 'Mac', :name => 'mac'}		
 			s << {:display => 'mask', :name => 'mask'}    	
-						s << {:display => 'channel', :name => 'channel'}   
+			s << {:display => 'channel', :name => 'channel'}   
+			
+			b << {:name => 'Adicionar', :bclass => 'add'}
+			b << {:separator => true}
+			b << {:name => 'Editar', :bclass => 'edit'}
+			b << {:separator => true}
+			b << {:name => 'Apagar', :bclass => 'destroy'}
 						
 		end 
+		
 	%>
+	
+	<%= flexigrid_button_click '.add', '/clients/new' %>
 });

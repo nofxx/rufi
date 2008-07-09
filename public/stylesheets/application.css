@@ -195,3 +195,15 @@ div#flash div.sucess span {
 	background: transparent url(../images/sucess.png) no-repeat;
 	padding-left: 20px;
 }
+
+.flexigrid div.fbutton span.add {
+	background: transparent url(../images/add.png) no-repeat scroll left center;
+}
+
+.flexigrid div.fbutton span.edit {
+	background: transparent url(../images/edit.png) no-repeat scroll left center;
+}
+
+.flexigrid div.fbutton span.destroy {
+	background: transparent url(../images/destroy.png) no-repeat scroll left center;
+}
