@@ -1,13 +1,17 @@
 $(document).ready(function(){
 	<% 
-		flexigrid('/clients', :sortname => 'essid', :title => 'Clientes') do |c,s|
+		flexigrid('/clients', :sortname => 'ip', :title => 'Clientes') do |c,s|
 		
-			c << {:display => 'Essid', :name => 'essid', :width => 50} 
-			c << {:display => 'MAC', :name => 'mac', :width => 100}
-			
-			s << {:display => 'Essid', :name => 'essid'}
-			s << {:display => 'Mac', :name => 'mac'}			
-			
+			c << {:display => 'Essid', :name => 'ip', :width => 50} 
+			c << {:display => 'MAC', :name => 'mac', :width => 100}      
+			c << {:display => 'mask', :name => 'mask', :width => 100}    
+			c << {:display => 'channel', :name => 'channel', :width => 100} 
+						
+			s << {:display => 'Essid', :name => 'ip'}
+			s << {:display => 'Mac', :name => 'mac'}		
+			s << {:display => 'mask', :name => 'mask'}    	
+						s << {:display => 'channel', :name => 'channel'}   
+						
 		end 
 	%>
 });
