@@ -7,7 +7,7 @@ class ApsController < ApplicationController
       format.js   # index.js.erb
       format.xml  { render :xml => @aps }
       format.json {
-      	@aps = flexigrid_paginate Ap, %w(essid, mac, enc, key, ip), params
+      	@aps = flexigrid_paginate Ap, %w[essid mac enc key ip], params
       	render :json => @aps.to_json, :template => false
       }
     end

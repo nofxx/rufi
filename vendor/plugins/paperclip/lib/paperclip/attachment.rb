@@ -159,14 +159,15 @@ module Paperclip
     # again.
     def reprocess!
       new_original = Tempfile.new("paperclip-reprocess")
-      old_original = to_file(:original)
-      new_original.write( old_original.read )
-      new_original.rewind
+      if old_original = to_file(:original)
+        new_original.write( old_original.read )
+        new_original.rewind
 
-      @queued_for_write = { :original => new_original }
-      post_process
+        @queued_for_write = { :original => new_original }
+        post_process
 
-      old_original.close if old_original.respond_to?(:close)
+        old_original.close if old_original.respond_to?(:close)
+      end
     end
 
     private
@@ -202,6 +203,7 @@ module Paperclip
       @styles.each do |name, args|
         begin
           dimensions, format = args
+          dimensions = dimensions.call(instance) if dimensions.respond_to? :call
           @queued_for_write[name] = Thumbnail.make(@queued_for_write[:original], 
                                                    dimensions,
                                                    format, 
