@@ -1,0 +1,16 @@
+$(document).ready(function(){
+	<% 
+		flexigrid('/aps',  :sortname => 'mac', :title => 'Pontos de acesso') do |c,s|
+		
+			c << {:display => 'Essid', :name => 'essid', :width => 50} 
+			c << {:display => 'MAC', :name => 'mac', :width => 100}
+			c << {:display => 'Enc', :name => 'enc', :width => 100}
+			c << {:display => 'Key', :name => 'key', :width => 100}
+			c << {:display => 'IP', :name => 'ip', :width => 100}									
+			
+			s << {:display => 'Mac', :name => 'mac'}
+			s << {:display => 'IP', :name => 'ip'}
+			
+		end 
+	%>
+});

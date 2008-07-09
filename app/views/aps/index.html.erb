@@ -1,22 +1,5 @@
-<h1>Listando Pontos de acesso (<%= @aps.length %>)</h1>
+<h1>Listando Pontos de acesso</h1>
 <p>
 	<%= link_to 'Novo ap', new_ap_path %>
 </p>
-<% table @aps, ['Essid', 'MAC', 'Enc', 'Key', 'IP', 'Clientes', 'DHCP', 'Canal', 'Cidade', 'Estado'] do |ap| %>
-  <tr>
-    <td><%= link_to ap.essid, ap %></td>
-    <td><%=h ap.mac %></td>
-    <td><%=h ap.enc %></td>
-    <td><%=h ap.key %></td>
-    <td><%=h ap.ip %></td> 
-    <td><%=h ap.clients.count %></td> 
-    <td><%=h ap.dhcp %></td>
-    <td><%=h ap.channel %></td>
-    <td><%=h ap.city %></td>
-    <td><%=h ap.region %></td>
-    <td class="actions">
-    	<%= link_to 'Editar', edit_ap_path(ap) %>
-    	<%= link_to 'Apagar', ap, :confirm => 'Tem certeza?', :method => :delete, :class => 'destroy' %>
-    </td>
-  </tr>
-<% end %>
+<%= content_tag('table', '', :id => 'flexigrid') %>

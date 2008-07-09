@@ -1,29 +1,3 @@
-<h1>Listando clientes (<%= @clients.length %>)</h1>
-<p>
-	<%= link_to 'Novo cliente', new_client_path %>  
-</p>
-
-<table id="flexigrid"></table>
-<script>
-  $('#flexigrid').flexigrid({
-    url: 'http://localhost:3000/clients.json',
-    method: 'get',
-    dataType: 'json',    
-    colModel : [
-      {display: 'Essid', name : 'essid', width : 100},
-      {display: 'MAC', name : 'mac', width : 100}
-    ], 
-    searchitems : [
-      {display: 'Essid', name : 'essid'},
-      {display: 'Enc', name : 'enc'}
-    ],
-    sortname: "essid",
-    sortorder: "desc",
-    usepager: true,
-    title: 'Clients',
-    useRp: true,
-    rp: 15,
-    showTableToggleBtn: true,
-    
-  });
-</script>
+<h1>Listando clientes</h1>
+<p><%= link_to 'Novo cliente', new_client_path %></p>
+<%= content_tag('table', '', :id => 'flexigrid') %>

@@ -2,18 +2,4 @@
 <p>
 	<%= link_to 'Enviar arquivo!', new_logfile_path %>
 </p>
-<% table @logfiles, ['Type', 'Parse', 'File Names', 'File sizes', 'Note'] do |logfile| %>
-  <tr>
-    <td><%= link_to logfile.class, logfile_path(logfile) %></td>
-    <td><%=h logfile.state %></td>
-    <td><%=h logfile.source_file_name %></td>
-    <td><%=h number_to_human_size(logfile.source_file_size, 0) %></td>
-    <td><%=h logfile.note %></td>
-    <td class="actions">
-    	<%= link_to 'Editar', edit_logfile_path(logfile) %>
-    	<%= link_to 'Apagar', logfile_path(logfile), :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %>
-    </td>
-  </tr>
-<% end %>
-
-
+<%= content_tag('table', '', :id => 'flexigrid') %>

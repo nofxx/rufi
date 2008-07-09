@@ -1,0 +1,14 @@
+$(document).ready(function(){
+	<% 
+		flexigrid('/logfiles', :sortname => 'type', :title => 'LogFiles') do |c,s|
+		
+			c << {:display => 'Type', :name => 'type', :width => 50} 
+			c << {:display => 'Parse', :name => 'state', :width => 100}
+			c << {:display => 'File Name', :name => 'source_file_name', :width => 100}
+			c << {:display => 'Note', :name => 'note', :width => 100}									
+			
+			s << {:display => 'File Name', :name => 'source_file_name'}
+			
+		end 
+	%>
+});

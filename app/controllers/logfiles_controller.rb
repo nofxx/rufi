@@ -2,11 +2,16 @@ class LogfilesController < ApplicationController
   # GET /logfiles
   # GET /logfiles.xml
   def index
-    @logfiles = Logfile.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @logfiles }
+      format.js   # index.js.erb
+      format.xml  { 
+      	render :xml => Logfile.all
+      }
+      format.json {
+      	@logfiles = flexigrid_paginate Logfile, %w(type, state, source_file_name, note), params
+      	render :json => @logfiles.to_json, :template => false
+      }
     end
   end
 
