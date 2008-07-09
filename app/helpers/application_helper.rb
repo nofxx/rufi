@@ -1,8 +1,8 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-	def table (collection, headers, options = {}, &proc)
-		options.reverse_merge!({:class => 'list',	:border => 0,	:width => '100%', :include_action => true	})
+	def table(collection, headers, options = {}, &proc)
+		options.reverse_merge!({:class => 'list',	:border => 0,	:width => '100%', :include_action => true })
 		
 		output = "<table class=\"#{options[:class]}\" border=\"#{options[:border].to_s}\" width=\"#{options[:width]}\" >\n"
 		output << "<thead>\n\t"
@@ -22,6 +22,21 @@ module ApplicationHelper
 			flashes += '</div>'
 		end
 		flashes
+	end
+	
+	def flexigrid(url, options = {}, &proc)
+		options.reverse_merge!(:method => 'get', :usepager => true, 'useRp' => true, :rp => 15, 'showTableToggleBtn' => true, :height => 300)
+		columns = []; search_itens = []
+		
+		proc.call columns, search_itens
+		
+		output = {:url => url_for(url+'.json'), 'colModel' => columns, 'searchitems' => search_itens, :method => options[:method], 'dataType' => 'json', 'useRp' => options[:useRp], :rp => options[:rp], 'showTableToggleBtn' => options['showTableToggleBtn'], :usepager => options[:usepager], :sortname => options[:sortname], :sortorder => 'desc', :height => options[:height]}
+		
+		output[:sortname] = options[:sortname] if options[:sortname]
+		output[:sortorder] = options[:sortorder] if options[:sortorder]
+		output[:title] = options[:title] if options[:title]
+		
+		concat("$('#flexigrid').flexigrid("+output.to_json+");", proc.binding)
 	end
 
 end

@@ -2,11 +2,14 @@ class ApsController < ApplicationController
   # GET /aps
   # GET /aps.xml
   def index
-    @aps = Ap.find(:all)
-
     respond_to do |format|
       format.html # index.html.erb
+      format.js   # index.js.erb
       format.xml  { render :xml => @aps }
+      format.json {
+      	@aps = flexigrid_paginate Ap, %w(essid, mac, enc, key, ip), params
+      	render :json => @aps.to_json, :template => false
+      }
     end
   end
 

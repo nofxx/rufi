@@ -5,18 +5,13 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.find(:all)
-
     respond_to do |format|
       format.html # index.html.erb
+      format.js   # index.js.erb
       format.xml  { render :xml => @clients }
       format.json {
-        return_data = Hash.new
-        return_data[:page] = 1
-        return_data[:count] = Client.count
-        return_data[:rows] = @clients.collect { |c| {:cell => [c.essid, c.mac]} }
-        
-        render :json => return_data.to_json, :template => false
+        @clients = flexigrid_paginate Client, %w(essid, mac), params
+        render :json => @clients.to_json, :template => false
       }
     end
   end

@@ -17,4 +17,36 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  
+  activate_js_erb_auto_include
+  
+  def flexigrid_paginate(model_class, select, params)
+
+  	page = params[:page] ? params[:page].to_i : 1
+  	rp = params[:rp] ? params[:rp] .to_i : 15
+  	query = params[:query]
+  	qtype = params[:qtype]
+  	sortname = params[:sortname]
+  	sortorder = params[:sortorder] ? params[:sortorder] : 'desc'
+  	
+  	start = ((page - 1) * rp).to_i
+  	query = '%'+query+'%'
+  	
+  	if query == '%%'
+  		@collection = model_class.all :select => select, :order => sortname+' '+sortorder, :limit => rp, :offset => start
+  		count = model_class.count
+  	else
+			@collection = model_class.all :select => select, :order => sortname+' '+sortorder, :limit => rp, :offset => start, :conditions => [qtype+' like ?', query]			
+  		count = model_class.count :conditions => [qtype+' like ?', query]
+  	end
+  	
+  	output = {}
+  	output[:page] = page
+  	output[:total] = count
+  	output[:rows] = @collection.collect { |c| {:cell => select.collect {|s| c[s]} }}
+  	
+  	output
+  
+  end
+  
 end
