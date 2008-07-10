@@ -2,15 +2,13 @@ $(document).ready(function(){
 	<% 
 		flexigrid('/clients', :sortname => 'ip', :title => 'Clientes', :useRp => true) do |c,s,b|
 					
+			c << {:display => 'Id', :name => 'id', :width => 50} 
 			c << {:display => 'Essid', :name => 'ip', :width => 50} 
 			c << {:display => 'MAC', :name => 'mac', :width => 100}      
-			c << {:display => 'mask', :name => 'mask', :width => 100}    
-			c << {:display => 'channel', :name => 'channel', :width => 100} 
+			c << {:display => 'IP', :name => 'ip', :width => 100}
 						
 			s << {:display => 'Essid', :name => 'ip'}
 			s << {:display => 'Mac', :name => 'mac'}		
-			s << {:display => 'mask', :name => 'mask'}    	
-			s << {:display => 'channel', :name => 'channel'}   
 			
 			b << {:name => 'Adicionar', :bclass => 'add'}
 			b << {:separator => true}
@@ -23,4 +21,6 @@ $(document).ready(function(){
 	%>
 	
 	<%= flexigrid_button_click '.add', '/clients/new' %>
+	<%= flexigrid_button_click '.edit', '/clients/edit', :include_id => true %>
+	<%= flexigrid_button_click '.destroy', '/clients/destroy', :include_id => true, :confirm => 'Tem certeza?' %>
 });

@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
       format.js   # index.js.erb
       format.xml  { render :xml => @clients }
       format.json {
-        @clients = flexigrid_paginate Client, %w[essid mac mask channel], params
+        @clients = flexigrid_paginate Client, %w[id essid mac ip], params
         render :json => @clients.to_json, :template => false
       }
     end
