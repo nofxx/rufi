@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	<% 
-		flexigrid('/clients', :sortname => 'ip', :title => 'Clientes') do |c,s|
+		flexigrid('/clients', :sortname => 'ip', :useRp => true, :title => 'Clientes') do |c,s|
 		
 			c << {:display => 'Essid', :name => 'ip', :width => 50} 
 			c << {:display => 'MAC', :name => 'mac', :width => 100}      
@@ -10,7 +10,10 @@ $(document).ready(function(){
 			s << {:display => 'Essid', :name => 'ip'}
 			s << {:display => 'Mac', :name => 'mac'}		
 			s << {:display => 'mask', :name => 'mask'}    	
-						s << {:display => 'channel', :name => 'channel'}   
+						s << {:display => 'channel', :name => 'channel'}  
+						
+			
+						 
 						
 		end 
 	%>

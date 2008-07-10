@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
   	start = ((page - 1) * rp).to_i
   	query = '%'+query+'%'
   	
-  	if query == '%%'                                 
-  	  puts select
+  	if query == '%%'                                
+
   		@collection = model_class.all :select => select.join(','), :order => sortname+' '+sortorder, :limit => rp, :offset => start
   		count = model_class.count
   	else
