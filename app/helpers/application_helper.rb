@@ -31,7 +31,7 @@ module ApplicationHelper
 			:useRp => true, 
 			:rp => 15, 
 			:showTableToggleBtn => true, 
-			:height => 300
+			:height => 'auto'
 		)
 		
 		columns = []; search_itens = []; buttons = []
