@@ -50,7 +50,7 @@ module ApplicationHelper
 			:showTableToggleBtn => options['showTableToggleBtn'], 
 			:usepager => options[:usepager], 
 			:sortname => options[:sortname], 
-			:sortorder => 'desc',
+			:sortorder => 'asc',
 			:multiselect => false,
 			:height => options[:height]
 		}
