@@ -1,0 +1,40 @@
+- form_for(@ap) do |f| 
+= f.error_messages      
+%p
+  = f.label :essid 
+  = f.text_field :essid
+%p
+  = f.label :mac
+  = f.text_field :mac
+%p
+  = f.label :enc 
+  = f.text_field :enc 
+%p
+  = f.label :key 
+  = f.text_field :key 
+%p
+  = f.label :ip 
+  = f.text_field :ip 
+%p
+  = f.label :mask 
+  = f.text_field :mask 
+%p
+  = f.label :dhcp 
+  = f.check_box :dhcp 
+%p
+  = f.label :canal 
+  = f.text_field :channel 
+%p
+  = f.label :Pais 
+  = f.text_field :country 
+%p
+  = f.label :Cidade 
+  = f.text_field :city 
+%p
+  = f.label :Estado 
+  = f.text_field :region 
+
+%p= f.submit(metodo == "post" ? "Gravar" : "Atualizar")    
+- end
+
+

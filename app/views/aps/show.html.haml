@@ -1,0 +1,44 @@
+%h1= @ap.essid
+%p
+  %b Essid:
+  =h @ap.essid
+%p
+  %b Mac:
+  =h @ap.mac
+%p
+  %b Enc:
+  =h @ap.enc
+%p
+  %b Key:
+  =h @ap.key
+%p
+  %b Ip:
+  =h @ap.ip
+%p
+  %b Mask:
+  =h @ap.mask
+%p
+  %b DHCP:
+  =h @ap.dhcp
+%p
+  %b Canal:
+  =h @ap.channel
+%p
+  %b Pais:
+  =h @ap.country
+%p
+  %b Cidade:
+  =h @ap.city
+%p
+  %b Estado:
+  =h @ap.region
+%p
+  %b Clientes:
+  - for client in @ap.clients
+  %p
+    = link_to client.mac, client
+  - end
+%br/
+= link_to 'Editar', edit_ap_path(@ap)
+|
+= link_to 'Voltar', aps_path

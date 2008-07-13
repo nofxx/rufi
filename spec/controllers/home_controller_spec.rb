@@ -37,7 +37,7 @@ describe HomeController do
     
     it "should have tag bem vindo" do
       do_get
-      response.should have_tag('p', /vindo/)
+      response.should have_tag('h1', /vindo/)
     end
     
     it "should hava @mensagem with value Bem-vindo" do

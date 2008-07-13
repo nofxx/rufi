@@ -69,6 +69,7 @@ Rails::Initializer.run do |config|
   # #
   # GEMS
   # 
-  config.gem 'hpricot'
+  config.gem 'hpricot'     
+  config.gem 'haml' 
   
 end

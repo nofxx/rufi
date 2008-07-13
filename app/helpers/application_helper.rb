@@ -72,7 +72,7 @@ module ApplicationHelper
 			output << "  	if (confirm('#{options[:confirm]}'))" if options[:confirm]
 			output << "			window.location = '" << url_for(redirect_to_url) << "/'+$('td', '.trSelected', '.flexigrid')[0].textContent;"
 			output << " } else { "
-			output << " alert('You dont selected a item.'); } "
+			output << " alert('Select one item.'); } "
 		else
 			output << "window.location = '" << url_for(redirect_to_url) << "'"	
 		end

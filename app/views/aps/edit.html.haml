@@ -1,0 +1,7 @@
+%h1= "Editando #{@ap.essid}"
+
+= partial 'aps/ap', :metodo => "put"  
+
+= link_to 'Ver', @ap
+|
+= link_to 'Voltar', aps_path

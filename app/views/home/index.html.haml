@@ -1,0 +1,18 @@
+%h1= @mensagem
+           
+%p
+  You may want to start up 
+  = link_to "uploading a logfile?", new_logfile_path
+
+                              
+%h2 News on your area
+                     
+                     
+
+%h2= current_user.login.upcase
+%p
+  You have 
+  = link_to "#{@aps} Access Points", aps_path
+  and
+  = link_to "#{@clients} Clients.", clients_path 
+  
