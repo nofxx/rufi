@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	<% 
-		flexigrid('/logfiles', :sortname => 'type', :title => 'LogFiles') do |c,s|
+		flexigrid('/logfiles', :sortname => 'id') do |c,s,b|
 		
+			c << {:display => 'Id', :name => 'id', :width => 50} 
 			c << {:display => 'Type', :name => 'type', :width => 50} 
 			c << {:display => 'Parse', :name => 'state', :width => 100}
 			c << {:display => 'File Name', :name => 'source_file_name', :width => 100}
@@ -9,6 +10,17 @@ $(document).ready(function(){
 			
 			s << {:display => 'File Name', :name => 'source_file_name'}
 			
+			b << {:name => 'Enviar Arquivo', :bclass => 'add'}
+			b << {:separator => true}
+			b << {:name => 'Editar', :bclass => 'edit'}
+			b << {:separator => true}
+			b << {:name => 'Apagar', :bclass => 'destroy'}			
+			
 		end 
 	%>
+	
+	<%= flexigrid_button_click '.add', new_logfile_path %>
+	<%= flexigrid_button_click '.edit', '/logfiles/edit', :include_id => true %>
+	<%= flexigrid_button_click '.destroy', '/logfiles/destroy', :include_id => true, :confirm => 'Tem certeza?' %>		
+	
 });

@@ -9,7 +9,7 @@ class LogfilesController < ApplicationController
       	render :xml => Logfile.all
       }
       format.json {
-      	@logfiles = flexigrid_paginate Logfile, %w(type, state, source_file_name, note), params
+      	@logfiles = flexigrid_paginate Logfile, %w(id type state source_file_name note), params
       	render :json => @logfiles.to_json, :template => false
       }
     end

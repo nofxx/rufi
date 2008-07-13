@@ -162,7 +162,6 @@ div.errorExplanation ul {
 }
 
 div#flash div {
-	display: none;
 	font-weight: bold;
 	padding: 4px;
 }

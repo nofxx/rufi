@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	<% 
-		flexigrid('/aps',  :sortname => 'mac', :title => 'Pontos de acesso') do |c,s|
+		flexigrid('/aps',  :sortname => 'id') do |c,s,b|
 		
+			c << {:display => 'Id', :name => 'id', :width => 50} 
 			c << {:display => 'Essid', :name => 'essid', :width => 150} 
 			c << {:display => 'MAC', :name => 'mac', :width => 100}
 			c << {:display => 'Enc', :name => 'enc', :width => 100}
@@ -11,6 +12,17 @@ $(document).ready(function(){
 			s << {:display => 'Mac', :name => 'mac'}
 			s << {:display => 'IP', :name => 'ip'}
 			
+			b << {:name => 'Adicionar', :bclass => 'add'}
+			b << {:separator => true}
+			b << {:name => 'Editar', :bclass => 'edit'}
+			b << {:separator => true}
+			b << {:name => 'Apagar', :bclass => 'destroy'}
+			
 		end 
 	%>
+	
+	<%= flexigrid_button_click '.add', new_ap_path %>
+	<%= flexigrid_button_click '.edit', '/aps/edit', :include_id => true %>
+	<%= flexigrid_button_click '.destroy', '/aps/destroy', :include_id => true, :confirm => 'Tem certeza?' %>
+		
 });

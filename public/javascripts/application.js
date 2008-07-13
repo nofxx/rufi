@@ -3,5 +3,5 @@
 $(document).ready( function(){
 	
 	// show flashes with time out
-	setTimeout("$('div#flash div').fadeIn(1000)", 1000);
+	setTimeout("$('div#flash div').Shake(50)", 1000);
 });

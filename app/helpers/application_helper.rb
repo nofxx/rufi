@@ -31,7 +31,7 @@ module ApplicationHelper
 			:useRp => true, 
 			:rp => 15, 
 			:showTableToggleBtn => true, 
-			:height => 300
+			:height => 'auto'
 		)
 		
 		columns = []; search_itens = []; buttons = []
@@ -50,7 +50,7 @@ module ApplicationHelper
 			:showTableToggleBtn => options['showTableToggleBtn'], 
 			:usepager => options[:usepager], 
 			:sortname => options[:sortname], 
-			:sortorder => 'desc',
+			:sortorder => 'asc',
 			:multiselect => false,
 			:height => options[:height]
 		}
