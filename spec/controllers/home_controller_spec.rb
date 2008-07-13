@@ -1,7 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe HomeController do
+describe HomeController do   
+  fixtures :users
   integrate_views
+      
+  before(:each) do
+    u = User.first
+    controller.stub!(:current_user).and_return(u)  
+    #controller.stub!(:admin?).and_return(:true)    
+     #   controller.stub!(:'current_user.login').and_return(:true)     
+  end
   
   it "should use HomeController" do
     controller.should be_an_instance_of(HomeController)

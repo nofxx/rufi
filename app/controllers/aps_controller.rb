@@ -1,7 +1,8 @@
 class ApsController < ApplicationController
   # GET /aps
   # GET /aps.xml
-  def index
+  def index   
+    
     respond_to do |format|
       format.html # index.html.erb
       format.js   # index.js.erb

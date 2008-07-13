@@ -15,11 +15,12 @@ def obtain_attachments
 end
 
 def for_all_attachments
-  klass     = obtain_class
-  names     = obtain_attachments
-  instances = klass.find(:all)
+  klass = obtain_class
+  names = obtain_attachments
+  ids   = klass.connection.select_values("SELECT id FROM #{klass.table_name}")
 
-  instances.each do |instance|
+  ids.each do |id|
+    instance = klass.find(id)
     names.each do |name|
       result = if instance.send("#{ name }?")
                  yield(instance, name)
@@ -33,11 +34,29 @@ def for_all_attachments
 end
 
 namespace :paperclip do
-  desc "Regenerates thumbnails for a given CLASS (and optional ATTACHMENT)"
-  task :refresh => :environment do
-    for_all_attachments do |instance, name|
-      instance.send(name).reprocess!
-      instance.send(name).save
+  desc "Refreshes both metadata and thumbnails."
+  task :refresh => ["paperclip:refresh:metadata", "paperclip:refresh:thumbnails"]
+
+  namespace :refresh do
+    desc "Regenerates thumbnails for a given CLASS (and optional ATTACHMENT)."
+    task :thumbnails => :environment do
+      for_all_attachments do |instance, name|
+        instance.send(name).reprocess!
+      end
+    end
+
+    desc "Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT)."
+    task :metadata => :environment do
+      for_all_attachments do |instance, name|
+        if file = instance.send(name).to_file
+          instance.send("#{name}_file_name=", instance.send("#{name}_file_name").strip)
+          instance.send("#{name}_content_type=", file.content_type.strip)
+          instance.send("#{name}_file_size=", file.size) if instance.respond_to?("#{name}_file_size")
+          instance.save(false)
+        else
+          true
+        end
+      end
     end
   end
 
@@ -45,7 +64,7 @@ namespace :paperclip do
   task :clean => :environment do
     for_all_attachments do |instance, name|
       instance.send(name).send(:validate)
-      if instance.valid?
+      if instance.send(name).valid?
         true
       else
         instance.send("#{name}=", nil)
