@@ -1,7 +1,5 @@
 class ClientsController < ApplicationController
   
-  protect_from_forgery :except => :index
-
   # GET /clients
   # GET /clients.xml
   def index
