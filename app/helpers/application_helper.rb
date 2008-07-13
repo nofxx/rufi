@@ -25,18 +25,59 @@ module ApplicationHelper
 	end
 	
 	def flexigrid(url, options = {}, &proc)
-		options.reverse_merge!(:method => 'get', :usepager => true, 'useRp' => true, :rp => 15, 'showTableToggleBtn' => true, :height => 300)
-		columns = []; search_itens = []
+		options.reverse_merge!(
+			:method => 'get', 
+			:usepager => true, 
+			:useRp => true, 
+			:rp => 15, 
+			:showTableToggleBtn => true, 
+			:height => 300
+		)
 		
-		proc.call columns, search_itens
+		columns = []; search_itens = []; buttons = []
 		
-		output = {:url => url_for(url+'.json'), 'colModel' => columns, 'searchitems' => search_itens, :method => options[:method], 'dataType' => 'json', 'useRp' => options[:useRp], :rp => options[:rp], 'showTableToggleBtn' => options['showTableToggleBtn'], :usepager => options[:usepager], :sortname => options[:sortname], :sortorder => 'desc', :height => options[:height]}
+		proc.call columns, search_itens, buttons
+		
+		output = {
+			:url => url_for(url+'.json'), 
+			:buttons => buttons, 
+			:colModel => columns, 
+			:searchitems => search_itens, 
+			:method => options[:method], 
+			:dataType => 'json', 
+			:useRp => options[:useRp], 
+			:rp => options[:rp], 
+			:showTableToggleBtn => options['showTableToggleBtn'], 
+			:usepager => options[:usepager], 
+			:sortname => options[:sortname], 
+			:sortorder => 'desc',
+			:multiselect => false,
+			:height => options[:height]
+		}
 		
 		output[:sortname] = options[:sortname] if options[:sortname]
 		output[:sortorder] = options[:sortorder] if options[:sortorder]
 		output[:title] = options[:title] if options[:title]
 		
 		concat("$('#flexigrid').flexigrid("+output.to_json+");", proc.binding)
+	end
+	
+	def flexigrid_button_click(class_name, redirect_to_url, options = {})
+		options.reverse_merge!(:include_id => false)
+		
+		output = "$('.flexigrid div.fbutton span#{class_name}').parent().parent().click(function(){"
+		
+		if options[:include_id]
+			output << " if ($('td', '.trSelected', '.flexigrid').length > 0) { "
+			output << "  	if (confirm('#{options[:confirm]}'))" if options[:confirm]
+			output << "			window.location = '" << url_for(redirect_to_url) << "/'+$('td', '.trSelected', '.flexigrid')[0].textContent;"
+			output << " } else { "
+			output << " alert('You dont selected a item.'); } "
+		else
+			output << "window.location = '" << url_for(redirect_to_url) << "'"	
+		end
+		
+		output << "});"
 	end
 
 end

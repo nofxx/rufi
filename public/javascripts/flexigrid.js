@@ -706,7 +706,11 @@
 								function (e) 
 									{ 
 										var obj = (e.target || e.srcElement); if (obj.href || obj.type) return true;
-										$(this).toggleClass('trSelected'); 
+										$(this).toggleClass('trSelected');
+										
+										if (!p.multiSelect) {
+                    	$('tbody tr.trSelected').not(this).removeClass('trSelected'); // only one row should be selected.
+                		}
 									}
 							)
 							.mousedown(
